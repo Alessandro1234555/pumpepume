@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Amor</title>
+    <style>
+        /* Estilos generales */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            flex-direction: column;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4); /* Fondo degradado */
+            color: #fff; /* Texto blanco para contrastar */
+        }
+
+        /* Estilos para los botones */
+        .heart-button, .choice-button {
+            width: 220px;
+            height: 50px;
+            background-color: #ff6f61; /* Color más suave */
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            border-radius: 25px; /* Bordes más redondeados */
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Transición suave */
+        }
+
+        .heart-button:hover {
+            background-color: #ff3b2f; /* Cambio de color al pasar el mouse */
+            transform: scale(1.05); /* Efecto de escala */
+        }
+
+        /* Estilos para las pantallas */
+        .screen {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateY(100%);
+            transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+            opacity: 0; /* Inicialmente invisible */
+        }
+
+        .screen.active {
+            transform: translateY(0);
+            opacity: 1; /* Visible cuando está activa */
+        }
+
+        /* Estilos para el texto */
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra para el texto */
+        }
+
+        /* Estilos para la imagen */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para la imagen */
+        }
+
+        /* Estilos para los botones de elección */
+        .choice-buttons {
+            display: flex;
+            gap: 20px; /* Espacio entre los botones */
+        }
+
+        .choice-button.no {
+            background-color: #ccc; /* Color gris para el botón "No" */
+        }
+
+        .choice-button.no:hover {
+            background-color: #bbb; /* Cambio de color al pasar el mouse */
+        }
+
+        .choice-button.si {
+            transition: transform 0.5s ease; /* Transición para el botón "Sí" */
+        }
+
+        /* Estilos para la sección de razones */
+        .razones-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.2); /* Fondo semi-transparente */
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .razon {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .razon.active {
+            opacity: 1;
+        }
+
+        .razon-button {
+            margin-top: 20px;
+        }
+
+        /* Estilos para la pantalla final de cumpleaños */
+        .final-screen {
+            text-align: center;
+            padding: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Pantalla 1 -->
+    <div id="pantalla1" class="screen active">
+        <h1>Ola ute</h1>
+        <img src="https://media3.giphy.com/media/v1.Y2lkPTA3MTNiODVjN2ozMzI0MWRxNHRueDd3bXN0Y3dvcnBvdGh2cXV0aXhocGVmNHJ2biZlcD12MV9naWZzX2dpZklkJmN0PXM/VMXbE5DJU4F5D986f3/200.gif" alt="Gif divertido">
+        <button class="heart-button" onclick="mostrarPantalla('pantalla2')">Presione para continuar muajajaja</button>
+    </div>
+
+    <!-- Pantalla 2: Mensaje largo -->
+    <div id="pantalla2" class="screen">
+        <h1>Mi niña hermosa, hoy es un día especial para ti, y pues se que no puedo estar contigo en presencia ahorita, pero espero que esto te haga sentir todo mi amor, lo hice con dedicación y mucho esfuerzo, dejame decirte que te amo, eres mi mundo entero, y estoy tan feliz de que hoy cumplas tus 18 años, estoy tan feliz de tener la oportunidad de estar en tu vida para este momento, ser parte de este momento me hace muy feliz, el hecho de saber que  tu estas feliz me hace feliz, por eso vengo a decirte que te amo mucho mi altia de poio, y quiero que te la pases bien hoy que es tu día, que la pases increible, te amo mucho mucho mucho, betitos mua mua mua muaaaaaaaaaaaaaaaaaaaaaaaa TE AMOOOOOOOOOOO ❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️</h1>
+        <button class="heart-button" onclick="mostrarPantalla('pantalla3')">Continuar</button>
+    </div>
+
+    <!-- Pantalla 3: Pregunta "¿Ute sabe que la amo veda?" con sticker -->
+    <div id="pantalla3" class="screen">
+        <h1>¿Ute sabe que la amo veda?</h1>
+        <img src="https://instagram.fgua3-6.fna.fbcdn.net/v/t39.74738-6/458389194_17863438632217634_3891277962805156435_n.webp?_nc_cat=1&ccb=1-7&_nc_sid=8ec1f7&_nc_ohc=LvXD4wehicIQ7kNvgEowNJ-&_nc_oc=Adhep2RybcyIPBZwYXi4dC5V5zLBW9HV4i1YvtVTdyB9xDHlgapX47wCFnNir6iqt1XPDuV3TIPnysB4tZqXcizi&_nc_ad=z-m&_nc_cid=0&_nc_zt=14&_nc_ht=instagram.fgua3-6.fna&_nc_gid=AmUQWestu5v5796lCIN44OS&oh=00_AYBJ_3tqX2v1TYhYFdHnvz-Vh1Yo00g8Uur92cs5VZWJTQ&oe=67B8821F" alt="Sticker lindo" style="max-width: 100%; border-radius: 10px; margin-top: 20px;">
+        <div class="choice-buttons">
+            <button class="choice-button si" id="siButton" onclick="responderSi()">Sí</button>
+            <button class="choice-button no" id="noButton" onclick="responderNo()">No</button>
+        </div>
+    </div>
+
+    <!-- Pantalla 4: Razones por las que la amo -->
+    <div id="pantalla4" class="screen">
+        <div class="razones-container">
+            <h1>Razones por las que amo a mi alita de poio ❤️</h1>
+            <div class="razon" id="razon-texto">Cargando razones...</div>
+            <button class="heart-button razon-button" onclick="mostrarSiguienteRazon()">Siguiente razón</button>
+        </div>
+    </div>
+
+    <!-- Pantalla Final: Mensaje de Cumpleaños -->
+    <div id="pantallaFinal" class="screen">
+        <div class="final-screen">
+            <h1>FELIZ CUMPLEAÑOS MI AMOOOOOR QUE LA PASES SUPER BIEEEEEN TE AMOOOOOOOO</h1>
+            <img src="https://media3.giphy.com/media/v1.Y2lkPTA3MTNiODVjbnZ3dWR0N205a3p6aDFyZ3FrbGNndDZjOGNldmUzdjM1aXV6dG92cCZlcD12MV9naWZzX2dpZklkJmN0PXM/9xcBrf9lGQBXNBkjno/200.gif" alt="Gif de cumpleaños" style="max-width: 100%; border-radius: 10px; margin-top: 20px;">
+        </div>
+    </div>
+
+    <script>
+        // Función para cambiar de pantalla
+        function mostrarPantalla(id) {
+            document.querySelector('.screen.active').classList.remove('active');
+            document.getElementById(id).classList.add('active');
+        }
+
+        // Funciones para manejar la pregunta "¿Ute sabe que la amo veda?"
+        let siButton = document.getElementById("siButton");
+        let noButton = document.getElementById("noButton");
+        let noPresiones = 0;
+
+        function responderNo() {
+            noPresiones++;
+            if (noPresiones < 15) {
+                siButton.style.transform = `scale(${1 + (noPresiones * 0.05)})`; // Aumentar tamaño de "Sí"
+                noButton.style.transform = `scale(${1 - (noPresiones * 0.05)})`; // Reducir tamaño de "No"
+            } else {
+                siButton.style.transform = "scale(3)"; // Llenar el espacio
+                noButton.style.transform = "scale(0.1)"; // Ultra diminuto
+            }
+        }
+
+        function responderSi() {
+            // Pasar a la sección de razones
+            mostrarPantalla('pantalla4');
+        }
+
+        // Lista de razones (puedes agregar más)
+       const razones = [
+    "Porque eres la persona más especial en mi vida.",
+    "Porque tu iluminas mi día.",
+    "Porque me haces sentir amado como nunca nadie más lo ha hecho.",
+    "Porque eres no solo mi novia, mi mejor amiga y confidente, tengo la confianza de decirte todo.",
+    "Porque contigo cada mal momento en mi vida se esfuma.",
+    "Porque me aceptas tal como soy, me amas por mi forma de ser y no solo por mi físico.",
+    "Porque me haces reír de felicidad hasta olvidar mis problemas.",
+    "Porque eres increíblemente hermosa por dentro y por fuera.",
+    "Porque me inspiras a ser mejor persona.",
+    "Porque me haces sentir seguro.",
+    "Porque siempre sabes cómo animarme jijiji.",
+    "Porque eres mi lugar favorito en el mundo.",
+    "Porque me haces sentir que todo es posible aun cuando ni yo veo posibilidad de lograr las cosas.",
+    "Eres la razón por la que sonrío todos los días.",
+    "Porque me haces sentir que soy importante para ti.",
+    "Me haces sentir que soy el hombre más afortunado.",
+    "Eres literalmente mi otra mitad, me haces sentir lleno y completo.",
+    "Me haces sentir que puedo lograr lo que me proponga.",
+    "Eres mi refugio y lugar seguro en los días difíciles.",
+    "Me haces sentir que soy suficiente.",
+    "Eres mi mayor motivación.",
+    "Me haces sentir que soy especial.",
+    "Porque me haces sentir que soy valioso en tu vida.",
+    "Eres lo que siempre quise en mi vida.",
+    "Me haces sentir que soy importante para ti.",
+    "Eres mi mayor razón para ser feliz.",
+    "Me haces sentir que me amas incondicionalmente.",
+    "Eres mi razón para sonreír.",
+    "Porque me haces sentir que soy tu todo.",
+    "Eres mi razón para ser mejor en todos los sentidos.",
+    "Me haces sentir que me ves como tu compañero de vida.",
+    "Porque me haces sentir que soy tu apoyo.",
+    "Porque eres mi razón para soñar.",
+    "Me has tenido confianza sobre muchas cosas privadas en tu vida.",
+    "Porque eres mi razón para ser feliz.",
+    "Porque eres mi razón para amar.",
+    "Porque eres mi razón para vivir.",
+    "Porque eres mi razón para sonreír todos los días.",
+    "Porque eres mi razón para creer en el amor eterno.",
+    "Siempre me haces reír, incluso en mis peores días.",
+    "Me escuchas con atención y nunca me juzgas.",
+    "Eres bien inteligente y siempre me motivas a aprender más.",
+    "Siempre estás dispuesta a ayudarme, eres una muy buena persona.",
+    "Siempre te preocupas por mí incluso cuando yo no lo hago por mí mismo.",
+    "Me dices muchas cosas bonitas :3.",
+    "Eres la mejor novia del mundo.",
+    "Me animas mucho a seguir adelante.",
+    "Me apoyas y me corriges cuando estoy mal en algo.",
+    "Tu honestidad.",
+    "Tu fidelidad y lealtad por mi.",
+    "La conexión que hemos tenido desde un principio.",
+    "La química y como nos sentimos cómodos desde un principio.",
+    "Tus intereses personales.",
+    "Tus metas a corto y largo plazo.",
+    "La madurez que tienes.",
+    "La forma madura en la que has aprendido a estar conmigo.",
+    "Tu forma de ser.",
+    "Tu linda manera de amarme.",
+    "La forma en la que demuestras que me amas.",
+    "Tu personalidad.",
+    "La bromita para yutub que me haces muajajaja.",
+    "La forma en la que me cuidas en todos los aspectos.",
+    "La emoción que te causa cuando logro algo o te aviso que estoy comiendo.",
+    "Tu forma sincera de ser conmigo.",
+    "Tus palabras de afirmación cuando las necesito.",
+    "La forma en la que me chuleas.",
+    "Tu compañía en mi vida :3.",
+    "Tus berrinches JKASJDKASD.",
+    "Tu confianza en mi.",
+    "Tu carisma hacia conmigo.",
+    "Tus ojitos.",
+    "Tu carita linda y hermosa.",
+    "Tu determinación.",
+    "Tu belleza incomparable.",
+    "Tu encanto.",
+    "Tus cejas.",
+    "Eres muy trabajadora.",
+    "Eres bien dedicada a lo que te gusta hacer.",
+    "Tus palabras de amor.",
+    "Tus hábitos.",
+    "Tus pestañas.",
+    "La ternura que me das.",
+    "Tu nariz.",
+    "Tus labios.",
+    "El como buscas mejorar por mí y la relación siempre y continuamente.",
+    "El cómo complementas mi vida.",
+    "El amor que me pusiste.",
+    "Tu positividad.",
+    "Tu alegría.",
+    "Tu forma de ser respetuosa.",
+    "Tu cariño por mi hermana.",
+    "Tus enojos.",
+    "Tu bondad.",
+    "La forma madura con la que sabes lidiar los problemas.",
+    "El talento que tienes.",
+    "Tu esencia única.",
+    "Tu cuerpo.",
+    "Tu pelo.",
+    "Tu cintura.",
+    "Tu color de piel.",
+    "Tus piernotas muajajajaja.",
+    "El cómo aunque hemos tenido problemas hemos logrado superarlos poco a poco.",
+    "Lo hermoso que fue conocerte.",
+    "Lo espontánea que fue tu llegada a mi vida.",
+    "El cómo no pensaba en tener nada hasta que llegaste tú a mi vida y cambiaste eso.",
+    "Nunca pensé querer tener hijos y contigo sí.",
+    "Nunca pensé querer casarme y ahora es lo que más anhelo hacer contigo.",
+    "Nunca pensé tanto en mis sueños y metas hasta que tú me motivaste a hacerlo.",
+    "La inmensa importancia que tienes tú en mi vida mi amor.",
+    "El cómo a pesar de estar estresada en casa siempre has buscado tiempo para hablarme.",
+    "El cómo te preocupas por mis sentimientos.",
+    "Cuando me defiendes.",
+    "Cuando me regañas muajajaja.",
+    "Tu sinceridad ante toda situación.",
+    "El cómo me tienes locamente enamorado por ti.",
+    "Me amas a pesar de que aún tengo errores que corregir.",
+    "Tú siendo tú misma conmigo.",
+    "Eres mi todo.",
+    "Mi mundo.",
+    "Mi niña.",
+    "Mi princesa.",
+    "Mi mujer.",
+    "La mujer que me domina Muajajaja.",
+    "Uuuuuun lobo domesticado JAKSDJKAS.",
+    "Eres perfecta para mí.",
+    "La manera en la que tú ves lo bueno en mí aun cuando yo no lo veo.",
+    "Eres mi mayor sueño.",
+    "La responsabilidad afectiva que me das.",
+    "Tu lado amoroso.",
+    "Tu seriedad muajajaja.",
+    "DIOS TE AMOOOOOO.",
+    "Eres demasiado linda conmigo.",
+    "Eres literalmente la novia perfecta.",
+    "Eres todo lo que cualquier hombre quiere en su vida.",
+    "Eres una hermosa mujer.",
+    "Eres bellísima.",
+    "Eres espectacularmente hermosaaaaaaaaaaaaaaaaaaaaaaaa.",
+    "Eres mi blanquita piciosa.",
+    "Eres mi corazoncito de poio.",
+    "Eres mi mayor pensamiento día y noche y durante los sueños, en todo momento.",
+    "Siempre estoy pensando en ti.",
+    "Me haces pensar en ti mucho mucho mucho.",
+    "Pienso en cómo estás?, como te sientes?, ¿has comido bien?, ¿estás bien?",
+    "Sacaste un lado amoroso bien intenso de mí.",
+    "Tienes el amor de mi niño interior.",
+    "Tienes todo el amor de Alessito.",
+    "Alessito chiquito, aquel que ha pasado malos momentos te ama mucho porque lo rescataste de malos momentos.",
+    "Alessito grande te ama mucho porque le has demostrado que vale mucho y es amado por alguien muy bueno (tú).",
+    "Me hiciste mejorar académicamente.",
+    "Me inspiraste a esforzarme aún más.",
+    "Me regañaste y me hiciste ver lo que estaba haciendo mal.",
+    "Me conoces muy bien.",
+    "Me conoces tan bien que sabes cuando tengo algo.",
+    "Has demostrado que me amas incondicionalmente con hechos y no solo a palabras.",
+    "Cuando hablamos me das mucha paz.",
+    "Me encanta molestarte muajajaja.",
+    "Me haces sentir orgulloso de tenerte en mi vida.",
+    "Haces que cada día sea inolvidable :3.",
+    "Nunca te rindes ante la adversidad.",
+    "Eres una mujer bien fuerte.",
+    "Me haces sentir el hombre más especial del planeta :3.",
+    "Eres mi compañera de vida.",
+    "Eres la persona que siempre voy a querer a mi lado.",
+    "Me encanta cuando te emocionas por mí.",
+    "Tu apoyo en cualquier cosa.",
+    "El cómo haces que yo siempre quiera demostrarte cuanto te amo.",
+    "Lo atenta que eres cuando te cuento sobre algo que me gusta.",
+    "El respetón que me das.",
+    "Haces que cada día te ame mucho mucho mucho más.",
+    "Eres única para mí, no hay nadie en este mundo que pueda reemplazarte, eres ÚNICA.",
+    "Te amo con todo mi corazón.",
+    "Te amo con toda mi alma.",
+    "Te amo con todas mis fuerzas.",
+    "Me haces sentir vivo.",
+    "Me animas a seguir viviendo.",
+    "Me haces motivarme a seguir adelante.",
+    "Has estado conmigo y para mí durante estos tiempos.",
+    "Tu presencia ha tranquilizado mi alma.",
+    "Tu mera existencia ha alegrado mi vida.",
+    "Mi existencia existe gracias a ti y te adoro más que a nada mi niña.",
+    "Siempre me dices palabras bonitas que me levantan el ánimo.",
+    "Me das la seguridad de que nuestro amor es real y genuino :3.",
+    "Cada día contigo es un regalo.",
+    "Me apoyas en mis locuras muajajaja, pero también me prohibes mis locuras si eso es peligroso JAJAJA.",
+    "Me haces mejorar continuamente para que siempre tengas una mejor versión de mí.",
+    "Tus palabras de amor tienen el poder de calmar cualquier angustia en mí.",
+    "Soy tan afortunado de tenerte en mi vida.",
+    "Cada vez que veo tus fotos, me siento afortunado de tenerte como mi esposa muajajaja.",
+    "No importa la distancia, siempre me haces sentir cerca de ti.",
+    "Siempre me haces reír JAJAJAJA.",
+    "Siempre encuentras la manera de contactarte conmigo y es algo que agradezco mucho de tu parte.",
+    "Cuando te enojas por alguna broma que te hago JAKSDJKASDJKASJD.",
+    "Eres la que me da paz en medio de las angustias.",
+    "Me enseñaste lo que significa ser amado.",
+    "Toda tu forma linda y preciosa de ser es compatible conmigo al 100.",
+    "Me haces llorar de felicidad.",
+    "Me haces alegrarme hasta el llanto de tus logros.",
+    "Cuando tú estás feliz yo también lo estoy.",
+    "Y pues tú eres mi niña, Lara, mi piciosa, mi todo, mi alita de poio <3."
+];
+
+
+        // Función para mostrar la siguiente razón
+        let indiceRazon = 0;
+
+        function mostrarSiguienteRazon() {
+            if (indiceRazon < razones.length) {
+                const razonElemento = document.getElementById("razon-texto");
+                razonElemento.innerText = razones[indiceRazon];
+                razonElemento.classList.add('active'); // Añadir la clase para animar la aparición
+                indiceRazon++;
+            } else {
+                // Pasar a la pantalla final
+                mostrarPantalla('pantallaFinal');
+            }
+        }
+    </script>
+</body>
+</html>
